@@ -82,7 +82,7 @@ function Home() {
 
       <section className="container-x pb-4">
         <SectionHeading eyebrow="Featured product" title="SmartBiz by OMXE" />
-        <div className="mt-10"><ProductCard p={PRODUCTS[0]} /></div>
+        <div className="mt-10">{PRODUCTS.map((p) => <ProductCard key={p.name} p={p} />)}</div>
       </section>
 
       <CtaBand />

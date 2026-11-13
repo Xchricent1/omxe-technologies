@@ -5,7 +5,7 @@ import { ContactForm } from "@/components/site/ContactForm";
 import { CONTACT } from "@/lib/site";
 
 export const Route = createFileRoute("/contact")({
-  validateSearch: (s: Record<string, unknown>): { service?: string } => (typeof s.service === "string" ? { service: s.service.slice(0, 100) } : {}),
+  validateSearch: (s: Record<string, unknown>): { service?: string } => (typeof s['service'] === "string" ? { service: s['service'].slice(0, 100) } : {}),
   head: () => ({ meta: [{ title: "Contact & Request a Quote | OMXE Technologies Uganda" }, { name: "description", content: "Contact OMXE Technologies to discuss custom software, AI solutions or systems engineering for your business. Request a quote today." }, { property: "og:title", content: "Contact & Request a Quote | OMXE Technologies Uganda" }, { property: "og:description", content: "Contact OMXE Technologies to discuss custom software, AI solutions or systems engineering for your business. Request a quote today." }, { property: "og:type", content: "website" }, { property: "og:url", content: "/contact" }], links: [{ rel: "canonical", href: "/contact" }] }),
   component: Contact,
 });
@@ -26,7 +26,7 @@ function Contact() {
         Share a few details about your project and we'll get back to you to discuss requirements and next steps.
       </PageHero>
       <section className="container-x grid gap-10 py-16 lg:grid-cols-[1.5fr_1fr]">
-        <div><h2 className="sr-only">Request a quote</h2><ContactForm defaultService={service} /></div>
+        <div><h2 className="sr-only">Request a quote</h2><ContactForm defaultService={service ?? ""} /></div>
         <aside aria-label="Contact details" className="space-y-3">
           {items.map(({ icon: I, label, value, href }) => {
             const inner = (<><span className="grid h-10 w-10 shrink-0 place-items-center rounded-lg bg-primary/15 text-accent"><I className="h-5 w-5" aria-hidden /></span><span className="min-w-0"><span className="block text-xs uppercase tracking-wider text-muted-foreground">{label}</span><span className="block break-all font-medium">{value}</span></span></>);
